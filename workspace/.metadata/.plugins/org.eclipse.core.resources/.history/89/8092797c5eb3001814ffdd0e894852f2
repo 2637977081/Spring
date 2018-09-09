@@ -1,0 +1,9 @@
+package com.spring.DI.example;
+
+import java.util.*;
+
+public class JavaCollection {
+	private  List addressList;
+	private  Set  addressSet;
+	private  Map  addressMap;
+}

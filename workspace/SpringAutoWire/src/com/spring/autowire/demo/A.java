@@ -1,0 +1,29 @@
+package com.spring.autowire.demo;
+
+public class A {
+	private B b;
+	private String str;
+	
+	public A(){
+		
+	}
+	public A(B b,String str){
+		this.b=b;
+		this.str=str;
+	}
+	
+	public B getB() {
+		return b;
+	}
+	public void setB(B b) {
+		this.b = b;
+	}
+	public String getStr() {
+		return str;
+	}
+	public void setStr(String str) {
+		this.str = str;
+	}
+	
+	
+}

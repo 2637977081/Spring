@@ -1,0 +1,15 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+   <bean id="A" class="com.spring.autowire.demo.A">
+   		<!-- 构造函数依赖注入 -->
+      	<constructor-arg ref="b"/>
+      	<constructor-arg value="构造函数自动注入" />
+   </bean>
+   
+   <bean id="b" class="com.spring.autowire.demo.B">
+   </bean>
+
+</beans>

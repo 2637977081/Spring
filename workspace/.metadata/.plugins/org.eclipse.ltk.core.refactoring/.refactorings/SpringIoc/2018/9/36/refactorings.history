@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;com.spring.example.hello&apos; to &apos;com.spring.IoC.example&apos;&#x0D;&#x0A;- Original project: &apos;SpringIoc&apos;&#x0D;&#x0A;- Original element: &apos;SpringIoc/src/com.spring.example.hello&apos;&#x0D;&#x0A;- Renamed element: &apos;SpringIoc/src/com.spring.IoC.example&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;com.spring.example.hello&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;com.spring.example.hello" name="com.spring.IoC.example" qualified="false" references="true" stamp="1536392397959" textual="false" version="1.0"/>
+</session>

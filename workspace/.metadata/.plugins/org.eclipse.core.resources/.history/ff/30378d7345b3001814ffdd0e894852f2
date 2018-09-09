@@ -1,0 +1,5 @@
+package com.spring.DI.example;
+
+public class AFunction {
+
+}

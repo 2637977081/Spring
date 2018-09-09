@@ -1,0 +1,16 @@
+package com.spring.DI.example;
+
+public class AFunction {
+	private B b;
+	
+	public void setB(B b){
+		System.out.println("AFunction …Ë÷√B");
+		this.b = b;
+	}
+	public B getB(){
+		return b;
+	}
+	public void aFunctionSpeack(){
+		b.bSpeack();
+	}
+}

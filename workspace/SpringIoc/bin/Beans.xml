@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<!-- 声明一个bean对象，id是唯一识别，class是目标路径 -->
+   	<bean id="helloWorld" class="com.spring.IoC.example.HelloWorldBean" init-method="init" destroy-method="destroy">
+   		<!-- 属性配置，name是bean对象中的属性，value是给该属性赋值 -->
+       	<property name="message" value="Hello World!"/>
+   	</bean>
+
+</beans>

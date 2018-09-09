@@ -1,0 +1,13 @@
+在原先的配置文件中，A需要注入B  
+	private B b;
+我们需要在每个<bean name="A">标签中手动添加注入对象B或属性或方法
+
+<bean name="" class="" autowire="">
+autowire自动注入，无需我们手动添加配置
+
+1>autowire="byName" 通过A中调用B的名字来查找xml中是否有<bean name="b" >并与之匹配连接注入
+
+2>autowire="byType" 通过A中调用B的类型来查找xml中是否有<bean name="B" >并与之匹配连接注入
+
+3>autowire="constructor" 通过A中构造函数的参数(B b,String str)来查找xml中是否有<bean name="B" >并与之匹配连接注入
+ 

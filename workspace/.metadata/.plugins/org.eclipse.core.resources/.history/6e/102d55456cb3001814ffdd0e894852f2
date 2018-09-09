@@ -1,0 +1,5 @@
+package com.spring.autowire.demo;
+
+public class SpringMain {
+
+}

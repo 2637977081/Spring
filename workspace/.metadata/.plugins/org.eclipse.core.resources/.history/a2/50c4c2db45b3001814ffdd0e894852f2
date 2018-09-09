@@ -1,0 +1,16 @@
+package com.spring.DI.example;
+
+public class AFunction {
+	private B b;
+	public AFunction(B b){
+		System.out.println("AConstructor ¹¹Ôìº¯Êý");
+		this.b = b;
+	}
+	
+	public B getB(){
+		return b;
+	}
+	public void B(){
+		b.bSpeack();
+	}
+}
