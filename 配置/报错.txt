@@ -1,0 +1,17 @@
+2018年9月1日14:25:19
+
+报错：
+Exception in thread "main" java.lang.NoClassDefFoundError: org/apache/commons/logging/LogFactory
+	at org.springframework.context.support.AbstractApplicationContext.<init>(AbstractApplicationContext.java:161)
+	at org.springframework.context.support.AbstractApplicationContext.<init>(AbstractApplicationContext.java:225)
+	at org.springframework.context.support.AbstractRefreshableApplicationContext.<init>(AbstractRefreshableApplicationContext.java:88)
+	at org.springframework.context.support.AbstractRefreshableConfigApplicationContext.<init>(AbstractRefreshableConfigApplicationContext.java:58)
+	at org.springframework.context.support.AbstractXmlApplicationContext.<init>(AbstractXmlApplicationContext.java:61)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:136)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:83)
+
+解决：
+	缺少
+		commons-logging.jar
+	下载路径：http://commons.apache.org/proper/commons-logging/download_logging.cgi	
+

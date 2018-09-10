@@ -1,0 +1,14 @@
+GitHub路径：https://github.com/spring-projects/spring-framework/wiki/Spring-Framework-Artifacts
+
+点击进入：http://repo.spring.io.
+
+	Artifact Repository Browser（左侧导航栏第二个）
+		libs-release-local
+			org
+				springframework
+					spring
+						{vsersion}.RELEASE
+							spring-framework-{version}-RELEASE-dist.zip
+							右侧上角download直接下载
+							下dependeny,maven 依赖
+
