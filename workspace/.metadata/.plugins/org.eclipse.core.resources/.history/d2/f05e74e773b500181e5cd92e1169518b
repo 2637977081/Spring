@@ -1,0 +1,26 @@
+package com.spring.Aop.demoAnnotation;
+
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+
+@Aspect
+@Pointcut("execution(* com.spring.Aop.demoAnnotation.*.*(..))")
+public class Log {
+	
+	
+	@Before("log()")
+	public void before(){
+		System.out.println("before之前");
+	}
+	@After("log()")
+	public void after(){
+		System.out.println("after之后");
+	}
+	@AfterReturning("log()")
+	public void afterReturning(Object result){
+		System.out.println("afterReturning:"+result);
+	}
+}

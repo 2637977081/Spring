@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<!-- 声明一个bean对象，id是唯一识别，class是目标路径 -->
+   	<bean id="A" class="com.spring.EventHandler.demo.A">
+   		
+       	<property name="message" value="A 被调用"/>
+   	</bean>
+
+</beans>

@@ -1,0 +1,5 @@
+package com.spring.Aop.demoAnnotation;
+
+public class Log {
+
+}

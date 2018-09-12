@@ -1,0 +1,17 @@
+package com.spring.Aop.demo;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class SpringMain {
+	public static void main(String[] args){
+		ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+		User user = (User) context.getBean("user");
+		System.out.println("---------"+user.getUsername());
+		System.out.println("---------"+user.getPassword());
+		user.setUsername("admin");
+		user.setPassword("12345");
+		System.out.println("---------"+user.getUsername());
+		System.out.println("---------"+user.getPassword());
+	}
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
+
+   <!-- aop配置文件 -->
+   	<aop:config>
+   		<!-- 切面调用的bean -->
+   		<aop:aspect id="log" ref="logBean">
+   			<!-- 扫描 com.spring.Aop.demo 下所有类的所有函数-->
+   			<aop:pointcut expression="execution(* com.spring.Aop.demo.*(..))" id="point" />
+   		</aop:aspect>
+   	</aop:config>
+
+</beans>

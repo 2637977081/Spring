@@ -1,0 +1,10 @@
+spring事件处理,
+
+class A implements ApplicationListener<Context???Event>{
+	public void onApplicationEvent(){
+		xxx
+	}
+}
+
+ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+1、ContextStartedEvent 使用

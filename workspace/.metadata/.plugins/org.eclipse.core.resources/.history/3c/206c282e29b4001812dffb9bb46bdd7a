@@ -1,0 +1,25 @@
+注解(Annotation)
+又称java标注，是一种元数据
+在程序中给	类、方法、变量 添加注解后（相当于标记）反射获取标注内容
+
+<context:annotation-config/> 
+	隐式的向Spring容器注册 4个bean
+    AutowiredAnnotationBeanPostProcessor	@Autowired									<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+    CommonAnnotationBeanPostProcessor		@PersistenceContext							<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+    PersistenceAnnotationBeanPostProcessor	@Required									<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+    RequiredAnnotationBeanPostProcessor 	@Resource、@PostConstruct、@PostConstruct	<bean class="org.springframework.beans.factory.annotation.CommonAnnotationBeanPostProcessor"/>
+
+1、@Autowired 自动使用  autowire="byType" 依赖注入,按类型装配,无需beans.xml中另配置【spring支持】
+2、@PersistenceContext 持久化容器
+3、@Required 要求被注解的元素必须在beans.xml中配置
+4、@Resource	 @Resource(name="bean1") 默认是按名称来装配注入的，只有当找不到与名称匹配的bean才会按照类型来装配注入【jdk1.6支持】
+5、@Qualifier 当beans.mxl中有多个相同类型但不同名时,@Qualifier("bean1")可以确定使用名为bean1的bean对象【可以与autowire组合按名装配】
+6、@PostConstruct 该注解函数作为初始化回调函数的代替
+7、@PreDestroy 该注解函数作为销毁回调函数的代替
+8、@Configuration 的注解类表示这个类可以使用 Spring IoC 容器作为 bean 定义的来源
+
+
+
+
+
+

@@ -1,0 +1,9 @@
+注解(Annotation)
+又称java标注，是一种元数据
+在程序中给	类、方法、变量 添加注解后（相当于标记）反射获取标注内容
+
+<context:annotation-config/>
+
+1、@Required 要求被注解的元素必须在beans.xml中配置
+2、@Autowired 自动使用  autowire="byType" 依赖注入,无需beans.xml中另配置
+3、

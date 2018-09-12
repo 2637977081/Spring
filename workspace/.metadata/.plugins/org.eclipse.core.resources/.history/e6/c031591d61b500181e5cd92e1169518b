@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
+
+   <!-- aop配置文件 -->
+   	<aop:config>
+   		<!-- 定义切面 -->
+   		<aop:aspect id="log" ref="logBean">
+   			<!-- 定义连接点,扫描 com.spring.Aop.demo 下所有类的所有函数 并声明id-->
+   			<aop:pointcut expression="execution(* com.spring.Aop.demo.*.*(..))" id="point" />
+   			
+   			<!-- 调用之前执行函数 before-->
+   			<aop:before method="before" pointcut-ref="point"/>
+   			<!-- 环绕 -->
+   			<aop:around method="around" pointcut-ref="point"/>
+   			<!-- 之后 -->
+   			<aop:after method="after" pointcut-ref="point"/>
+   			<!-- 
+   				在目标方法完成之后,增强处理(会限制目标返回值)
+   				returning="retVal"表明允许在方法afterReturning()中定义名为result的形参  
+   			-->
+   			<aop:after-returning method="afterReturning" pointcut-ref="point"  returning="result"/>
+   			<!-- 
+   				在目标方法完成之后
+   				throwing="exception"表明允许在方法afterThrowing()中定义名为exception的形参
+   			 -->
+   			<aop:after-throwing method="afterThrowing" pointcut-ref="point" throwing="ex"/>
+   		</aop:aspect>
+   	</aop:config>
+   	
+	<bean id="user" class="com.spring.Aop.demo.User">
+		<property name="username" value="admin"/>
+		<property name="password" value="123456"/>    
+	</bean>
+	<bean id="logBean" class="com.spring.Aop.demo.Log"></bean>
+	
+</beans>

@@ -1,0 +1,23 @@
+package com.spring.Aop.annontation.demo;
+
+public class A {
+	private String msg;
+	private B b;
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+
+	public B getB() {
+		return b;
+	}
+
+	public void setB(B b) {
+		this.b = b;
+	}
+	
+}

@@ -1,0 +1,7 @@
+package com.spring.Aop.demo;
+
+public class Log {
+	private void before(){
+		System.out.println("before");
+	}
+}

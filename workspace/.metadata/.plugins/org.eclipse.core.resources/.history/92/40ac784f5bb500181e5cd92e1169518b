@@ -1,0 +1,22 @@
+package com.spring.EventHandler.demo;
+
+
+public class SpringMain {
+	private static int i = 1;
+	static {
+		i=2;
+	}
+	public static int next(){
+		return i++;
+		
+	}
+	public static void main(String[] agrs){
+		System.out.println(i);
+		SpringMain a=new SpringMain();
+		SpringMain b=new SpringMain();
+		SpringMain.next();
+		a.next();
+		b.next();
+		System.out.println(a.next());
+	}
+}
