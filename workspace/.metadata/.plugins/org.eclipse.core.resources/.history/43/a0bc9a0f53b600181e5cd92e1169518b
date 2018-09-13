@@ -1,0 +1,11 @@
+package com.spring.jdbc.demo;
+
+import java.util.List;
+
+public interface UserMapper {
+	public int createUser(UserPO user);
+	public int deleteUserById(String id);
+	public int updateUserById(UserPO user);
+	public List<UserPO> getUserListAll();
+	public UserPO getUserById(int id);
+}

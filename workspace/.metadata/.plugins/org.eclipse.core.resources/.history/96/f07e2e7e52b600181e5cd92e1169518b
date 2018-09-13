@@ -1,0 +1,43 @@
+package com.spring.jdbc.demo;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+public class UserJdbcTemplate implements UserMapper{
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
+	
+	@Override
+	public int createUser(UserPO user) {
+		String sql = "insert into user(username,password) values(?,?)";
+		int rownum = jdbcTemplate.update(sql,user.getUsername(),user.getPassword());
+		return rownum;
+	}
+
+	@Override
+	public int deleteUserById(String id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int updateUserById(UserPO user) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<UserPO> getUserListAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public UserPO getUserById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

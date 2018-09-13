@@ -1,0 +1,37 @@
+package com.spring.jdbc.demo;
+
+import java.util.List;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class SpringMain {
+	public static void main(String[] args){
+		ApplicationContext context = new ClassPathXmlApplicationContext("JDBCBeans.xml");
+		UserJdbcTemplate ujt = (UserJdbcTemplate) context.getBean("userJdbcTemplate");
+		
+		ujt.deleteUserById(1);
+		
+		UserPO user = new UserPO();
+		user.setUsername("lg");
+		user.setPassword("12345");
+		int rownum = ujt.createUser(user);
+		
+		user.setUsername("zdj");
+		user.setPassword("12345");
+		rownum += ujt.createUser(user);
+		System.out.println("插入条数："+rownum);
+		
+		user.setUsername("zh");
+		user.setPassword("12345");
+		rownum += ujt.createUser(user);
+		System.out.println("插入条数："+rownum);
+		
+		List<UserPO> list = ujt.getUserListAll();
+		for(UserPO u : list){
+			System.out.println(u.toString());
+		}
+		
+		
+	}
+}

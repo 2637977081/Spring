@@ -1,0 +1,94 @@
+package com.spring.jdbc.demo;
+
+import java.beans.ConstructorProperties;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+public class UserJdbcTemplate{
+	
+	private JdbcTemplate jdbcTemplate;
+	//@Autowired
+	private DataSource dataSource;
+	
+	//@ConstructorProperties("dataSource")
+	public void setDataSource(DataSource dataSource) {
+		this.dataSource = dataSource;
+		this.jdbcTemplate = new JdbcTemplate(dataSource);
+	}
+	
+	public int createUser(UserPO user) {
+		//System.out.println(user.getUsername()+";"+user.getPassword());
+		String sql = "insert into user(username,password) values(?,?)";
+		int rownum = jdbcTemplate.update(sql,user.getUsername(),user.getPassword());
+		return rownum;
+	}
+
+	
+	public int deleteUserById(int id) {
+		String sql = "delete table user where id = ?";
+		int rownum = jdbcTemplate.update(sql,id);
+		return rownum;
+	}
+
+	
+	public int updateUserById(UserPO user) {
+		String sql ="update user set username=?,password=? where id = ?";
+		int rownum = jdbcTemplate.update(sql, user.getUsername(),user.getPassword(),user.getId());
+		return rownum;
+	}
+
+	
+	public List<UserPO> getUserListAll() {
+		String sql = "select * from user";
+		/*方法一重写
+		List<UserPO> list = jdbcTemplate.query(sql,new RowMapper() {
+			
+			public UserPO mapRow(ResultSet rs, int rownum) throws SQLException {
+				UserPO user = new UserPO();
+				user.setId(rs.getInt("id"));
+				user.setPassword(rs.getString("password"));
+				user.setUsername(rs.getString("username"));
+				return user;
+			}
+		});
+		*/
+		/*方法二自定义
+		List<UserPO> list = jdbcTemplate.query(sql, new UserMapper());
+		*/
+		List<Map<String, Object>> mapList = jdbcTemplate.queryForList(sql);
+		List<UserPO> list = new ArrayList();
+		for (int i = 0; i < mapList.size(); i++) {
+			UserPO user = new UserPO();
+			user.setId((Integer)mapList.get(i).get("id"));
+			user.setUsername(mapList.get(i).get("username").toString());
+			user.setPassword(mapList.get(i).get("password").toString());
+			list.add(user);
+		}
+		return list;
+	}
+
+	
+	public UserPO getUserById(Integer id) {
+		System.out.println(id);
+		String sql = "select * from user where id = ?";
+		UserPO user = (UserPO) jdbcTemplate.query(sql,new Object[]{id},new UserMapper());
+		
+		/*
+		Map<String, Object> map =jdbcTemplate.queryForMap(sql, new Object[]{id},new UserPO());
+		UserPO user = new UserPO();
+		user.setId((int) map.get("id"));
+		user.setUsername(map.get("username").toString());
+		user.setPassword(map.get("password").toString());
+		*/
+		return user;
+	}
+	
+}
