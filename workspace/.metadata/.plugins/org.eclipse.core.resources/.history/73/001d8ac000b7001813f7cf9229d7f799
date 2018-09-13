@@ -1,0 +1,54 @@
+package com.spring.transaction.demo;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import javax.sql.DataSource;
+
+import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
+
+public class UserJdbcTemplate{
+
+	private JdbcTemplate jdbcTemplate;
+	private DataSource dataSource;
+	private PlatformTransactionManager ptm;
+	
+	public void setDataSource(DataSource dataSource) {
+		this.dataSource = dataSource;
+		this.jdbcTemplate = new JdbcTemplate(dataSource);
+	}
+	
+	public void setTransaction(PlatformTransactionManager ptm){
+		this.ptm = ptm;
+	}
+	
+	public void update(){
+		TransactionDefinition def = new DefaultTransactionDefinition();
+		TransactionStatus status = ptm.getTransaction(def);
+		try {
+			String sql = "inser into user(id,username,password) values(1,'lg','123456')";
+			System.out.println("sql÷¥––:"+sql);
+			jdbcTemplate.update(sql);
+			
+			sql = "inser into user(id,username,password) values(2,'zdj','123456')";
+			System.out.println("sql÷¥––:"+sql);
+			jdbcTemplate.update(sql);
+			
+			sql = "update user set username='zh' where id = 2";
+			System.out.println("sql÷¥––:"+sql);
+			jdbcTemplate.update(sql);
+			
+			ptm.commit(status);
+		} catch (DataAccessException e) {
+			ptm.rollback(status);
+			e.printStackTrace();
+		}
+	}
+	
+}

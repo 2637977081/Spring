@@ -1,0 +1,5 @@
+package com.spring.transction.demo;
+
+public class User {
+
+}

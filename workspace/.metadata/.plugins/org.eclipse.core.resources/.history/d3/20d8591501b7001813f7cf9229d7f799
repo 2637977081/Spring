@@ -1,0 +1,7 @@
+package com.spring.transaction.demo;
+
+public class SpringMain {
+	public static void main(String[] args){
+		
+	}
+}
